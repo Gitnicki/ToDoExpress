@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS todoexpress;
+
+CREATE USER IF NOT EXISTS 'ToDoUser'@'localhost' IDENTIFIED BY 'bmns';
+
+GRANT ALL PRIVILEGES ON todoexpress.* TO 'ToDoUser'@'localhost';
+
+FLUSH PRIVILEGES;
+

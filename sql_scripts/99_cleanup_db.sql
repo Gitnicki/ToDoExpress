@@ -1,0 +1,3 @@
+DROP USER IF EXISTS 'express'@'localhost';
+FLUSH PRIVILEGES;
+DROP DATABASE IF EXISTS todoexpress;
