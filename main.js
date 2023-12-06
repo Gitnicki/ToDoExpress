@@ -76,6 +76,7 @@ var con = mysql.createConnection({
     database: "todoexpress"
   });
 
+// Connection zu mysql
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
