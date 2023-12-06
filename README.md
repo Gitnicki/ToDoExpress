@@ -1,12 +1,10 @@
 # ToDoExpress
-
-# JS todoApp express 
-Todo app / javascript + mysql Gruppe 5 
+Todo app / javascript + mysql Gruppe 4
 
 # Install/Requirements:
 Im root Verzeichnis folgendes ausführen!
  ```
-npm install express mysql2
+npm install express mysql
 ```
 
 # Datenbank vorbereiten unter Bash
