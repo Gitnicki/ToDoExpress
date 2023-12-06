@@ -1,5 +1,5 @@
 # ToDoExpress
-Todo app / javascript + mysql Gruppe 4
+Todo app / javascript + mysql Gruppe 3
 
 # Install/Requirements:
 Im root Verzeichnis folgendes ausführen!
