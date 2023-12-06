@@ -79,9 +79,4 @@ var con = mysql.createConnection({
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-    con.query("SELECT * FROM tasks", function (err, result) {
-      if (err) throw err;
-      console.log("Database created");
-      console.log(result);
-    });
   });
