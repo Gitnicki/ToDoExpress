@@ -8,3 +8,7 @@ curl -X POST -H 'Content-Type: application/json' http://localhost:3000/save -d '
 echo "Test auflisten:"
 curl -X POST -H 'Content-Type: application/json' http://localhost:3000/list
 
+#Update Route, updated Taskstatus
+echo "Taskstatus updaten:"
+curl -X POST -H 'Content-Type: application/json' http://localhost:3000/update
+

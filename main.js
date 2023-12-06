@@ -42,6 +42,27 @@ app.post("/list", (req, res) => {
       });
     });
 
+// Update Route
+app.post("/update", (req, res) => {
+    console.log("Req:", req.body);
+    const { id } = req.body;
+    console.log(id);
+    // sql query um taskstatus upzudaten
+    const updatesql = `
+    UPDATE tasks 
+    SET taskstatus = CASE 
+      WHEN taskstatus = 'open' THEN 'in progress' 
+      WHEN taskstatus = 'in progress' THEN 'finished' 
+      ELSE taskstatus 
+    END 
+    WHERE id = ?;`
+    con.query(updatesql, [id], function (err, result) {
+        if (err) throw err;
+        console.log("Updated List.");
+        console.log(result);
+        res.status(200).send("taskstatus updated");
+      });
+    });
 
 app.listen(port, () => {
     console.log(`ToDo App started on Port ${port}`);
