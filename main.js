@@ -19,10 +19,8 @@ app.post("/hello", (req, res) => {
 app.post("/save", (req, res) => {
     console.log("Req:", req.body);
     // sql query um Daten zu speichern
-    con.query("INSERT INTO tasks (taskname, taskstatus) VALUES (?, ?);", [req.body.taskname, req.body.taskstatus], function (err, result) {
-        if (err) throw err;
-        console.log("Saved");
-        console.log(result);
+    var saveSql = `INSERT INTO tasks (taskname, taskstatus) VALUES (?, ?);`
+    con.query(saveSql, [req.body.taskname, req.body.taskstatus], (err, result) => {
         res.status(200).send("Saved");
       });
 })
@@ -31,10 +29,7 @@ app.post("/save", (req, res) => {
 app.post("/list", (req, res) => {
     console.log("Req:", req.body);
     // sql query um alles aus dem table tasks aufzurufen
-    con.query("SELECT * FROM tasks;", function (err, result) {
-        if (err) throw err;
-        console.log("Loaded List.");
-        console.log(result);
+    con.query("SELECT * FROM tasks;", (err, result) => {
         // sql Ergebnis in json umwandeln
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify?retiredLocale=de
         var jsonobj = JSON.stringify(result);
@@ -56,13 +51,18 @@ app.post("/update", (req, res) => {
       ELSE taskstatus 
     END 
     WHERE id = ?;`
-    con.query(updatesql, [id], function (err, result) {
-        if (err) throw err;
-        console.log("Updated List.");
-        console.log(result);
+    con.query(updatesql, [id], (err, result) => {
         res.status(200).send("taskstatus updated");
       });
     });
+
+// delete route
+app.post('/delete', (req, res) => {
+  const { id } = req.body;
+  const deleteSql = 'DELETE FROM tasks WHERE id = ?';
+  con.query(deleteSql, [id])
+  res.status(200).send("Deleted");
+});
 
 app.listen(port, () => {
     console.log(`ToDo App started on Port ${port}`);

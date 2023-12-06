@@ -10,5 +10,9 @@ curl -X POST -H 'Content-Type: application/json' http://localhost:3000/list
 
 #Update Route, updated Taskstatus
 echo "Taskstatus updaten:"
-curl -X POST -H 'Content-Type: application/json' http://localhost:3000/update
+curl -X POST -H 'Content-Type: application/json' http://localhost:3000/update -d '{"id":"4", "taskstatus":"open"}'
+
+#Delete Route, löscht Daten
+echo "Test löschen:"
+curl -X POST -H 'Content-Type: application/json' http://localhost:3000/delete -d '{"id":"10"}'
 
